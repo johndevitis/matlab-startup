@@ -1,20 +1,26 @@
 function startup
+%% default matlab start up routine
     fprintf('Hello, John. Its nice to see you again. \n');
     fprintf('Ill go ahead and initialize some things for you.\n');
+
+    %% shuffle random numbers
+    fprintf('Shuffling random numbers... ');
+    rng('shuffle');
+    fprintf('Done.\n');
     
-    % default for plots (print helper)
-    set(groot,'defaultFigurePaperPositionMode','auto');
+    %% add desired folders to matlab search path
     
-    % paths to add
-    root = 'C:\Users\John\repos';
-    folders = {  'classio', ...
+    root = 'C:\Users\John\repos'; % paths to add
+    
+    % folders to add
+    folders = { 'classio', ...
 				'classy', ...
 				'file', ...
 				'funky', ...
 				'vma',...
+                'st7api',...
 				};
-	
-	% add paths
+
     fprintf('\tAdding paths:\n');
     for ii = 1:length(folders)
         fname = fullfile(root,folders{ii});
@@ -23,6 +29,6 @@ function startup
     end
     fprintf('\tDone. Enjoy\n');
     
-	% change working directory to root
+	%% change working directory to root
 	cd(root);
 end
